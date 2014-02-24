@@ -1,0 +1,26 @@
+Happy monday, everyone! Here are your stats for the week ending <%= @end_date %>.
+<br/><br/>
+
+<p>
+Wall of Triumph<br/>
+===============<br/>
+<% @triumphs.each do |blogger| %>
+* <%= blogger.name %> (Streak: <%= blogger.streak %>): <%= link_to(blogger.last_post.title, blogger.last_post.url) %><br/>
+<% end %>
+</p>
+<br/>
+<p>
+Wall of Shame<br/>
+=============<br/>
+<% if @shames.empty? %>
+  Everybody blogged! We're the best!
+<% else %>
+  <% @shames.each do |blogger| %>
+  * <%= blogger.name %> (Total owed: <%= blogger.total_owed %>)<br/>
+  <% end %>
+<% end%>
+</p>
+<br/>
+You'll hear from me again in a week's time. Happy blogging!
+
+

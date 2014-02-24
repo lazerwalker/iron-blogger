@@ -1,0 +1,24 @@
+<h1>The Iron Bloggers</h1>
+<%= link_to 'Add a new blogger', new_blogger_path %><br/><br/>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Last Post</th>
+    <th>Date</th>
+    <th>Owed</th>
+    <th>Streak</th>
+  </tr>
+
+<% @bloggers.each do |blogger| %>
+  <tr class="<%= if blogger.has_blogged_this_week? then "triumph" else "shame" end %>">
+    <td><%= blogger.name %></td>
+    <td><%= link_to(blogger.last_post.title, blogger.last_post.url) %>
+    <td><%= distance_of_time_in_words_to_now(blogger.last_updated) %> ago</td>
+    <td><%= blogger.total_owed %></td>
+    <td><%= blogger.streak %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
